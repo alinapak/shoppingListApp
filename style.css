@@ -1,31 +1,22 @@
 #shopping-list {
-   /* width:100%; */
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
-   align-items: center;
-   padding: 0;
-   gap: 1rem;
+   padding:0.5rem;
 }
-
 .list {
-   min-width: 30%;
+   margin-bottom:0.5rem;
    padding: 0.5rem;
    border-radius: 25px;
    display: flex;
    list-style: none;
    background-color: #19875462;
-   justify-content: space-around;
+   justify-content: space-between;
 }
-
 .list-item {
    text-align: center;
    font-weight: 500;
    display:flex;
-   padding:0.5rem;
+   padding: 0 0.5rem;
+   flex:1;
 }
-
-
 .got-it {
    background-color: #19875462;
    color: white;
@@ -34,12 +25,17 @@
    width: fit-content;
    border: 1px solid white;
 }
-
 .delete {
-   background-color: #19875462;
+   background-color: #875b19c2;
    color: white;
    font-weight: 500;
    border-radius: 25px;
    width: fit-content;
    border: 1px solid white;
+}
+.in-a-cart::before {
+content:"✓";
+}
+.in-a-cart {
+   opacity:0.5;
 }
