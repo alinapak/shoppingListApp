@@ -11,18 +11,20 @@ function addShoppingInput(event) {
    list.classList.add("list");
    let newItem = document.createElement("li");
    newItem.innerText = shoppingInput.value;
-   newItem.classList.add("list-item");
-   list.appendChild(newItem);
-   let gotItButton = document.createElement("button");
-   gotItButton.innerText = "Got It";
-   gotItButton.classList.add("got-it");
-   list.appendChild(gotItButton);
-   let deleteButton = document.createElement("button");
-   deleteButton.innerText = "Delete";
-   deleteButton.classList.add("delete");
-   list.appendChild(deleteButton);
-   shoppingList.appendChild(list);
-   shoppingInput.value = "";
+   if (shoppingInput.value.length!==0) {
+      newItem.classList.add("list-item");
+      list.appendChild(newItem);
+      let gotItButton = document.createElement("button");
+      gotItButton.innerText = "Got It";
+      gotItButton.classList.add("got-it");
+      list.appendChild(gotItButton);
+      let deleteButton = document.createElement("button");
+      deleteButton.innerText = "Delete";
+      deleteButton.classList.add("delete");
+      list.appendChild(deleteButton);
+      shoppingList.appendChild(list);
+      shoppingInput.value = "";
+   }
 }
 
 function deleteOrGet(event) {
