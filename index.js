@@ -33,6 +33,7 @@ function deleteOrGet(event) {
     let item = event.target;
     if (item.classList[0] === "delete") {
         let shoppingItem = item.parentElement;
+        removeLocalItems(shoppingItem);
         shoppingItem.remove();
     }
     else if (item.classList[0] === "got-it") {
@@ -50,6 +51,7 @@ function saveLocalItems(items) {
     itemList.push(items);
     localStorage.setItem("itemList", JSON.stringify(itemList));
 }
+
 function readItems() {
     let itemList;
     if (localStorage.getItem("itemList") === null) {
@@ -74,4 +76,15 @@ function readItems() {
         list.appendChild(deleteButton);
         shoppingList.appendChild(list);
     })
+}
+function removeLocalItems(items) {
+    let itemList;
+    if (localStorage.getItem("itemList") === null) {
+        itemList = [];
+    } else {
+        itemList = JSON.parse(localStorage.getItem("itemList"));
+    }
+    let itemsIndex = items.children[0].innerText;
+    itemList.splice(itemList.indexOf(itemsIndex),1);
+    localStorage.setItem("itemList", JSON.stringify(itemList));
 }
