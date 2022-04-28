@@ -17,4 +17,4 @@ To create this App it was used basic HTML, CSS, JS and little of Bootstrap frame
 If you want to use this App, you can basically go to this link: <https://alinapak.github.io/shoppingListApp/>.
 
 ## Author
-This project was created by me [Alina Pakamorytė],(https://www.linkedin.com/in/alina-pakamoryt%C4%97-73a66377/).
+This project was created by me [Alina Pakamorytė](https://www.linkedin.com/in/alina-pakamoryt%C4%97-73a66377/).
