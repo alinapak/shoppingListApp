@@ -36,6 +36,3 @@
 .in-a-cart::before {
 content:"✓";
 }
-.in-a-cart {
-   opacity:0.5;
-}

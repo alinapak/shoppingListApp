@@ -1,6 +1,7 @@
 let shoppingInput = document.getElementById("shopping-input");
 let shoppingButton = document.getElementById("shopping-button");
 let shoppingList = document.getElementById("shopping-list");
+let div = document.getElementsByClassName("list");
 
 shoppingButton.addEventListener("click", addShoppingInput);
 shoppingList.addEventListener("click", deleteOrGet);
@@ -39,8 +40,10 @@ function deleteOrGet(event) {
     else if (item.classList[0] === "got-it") {
         let shoppingItem = item.parentElement;
         shoppingItem.classList.toggle("in-a-cart");
+        updateLocalItems(shoppingItem);
     }
 }
+
 function saveLocalItems(items) {
     let itemList;
     if (localStorage.getItem("itemList") === null) {
@@ -75,8 +78,10 @@ function readItems() {
         deleteButton.classList.add("delete");
         list.appendChild(deleteButton);
         shoppingList.appendChild(list);
-    })
+    }
+    )
 }
+
 function removeLocalItems(items) {
     let itemList;
     if (localStorage.getItem("itemList") === null) {
@@ -85,6 +90,32 @@ function removeLocalItems(items) {
         itemList = JSON.parse(localStorage.getItem("itemList"));
     }
     let itemsIndex = items.children[0].innerText;
-    itemList.splice(itemList.indexOf(itemsIndex),1);
+    itemList.splice(itemList.indexOf(itemsIndex), 1);
+    localStorage.setItem("itemList", JSON.stringify(itemList));
+}
+
+function updateLocalItems() {
+    let itemList;
+    if (localStorage.getItem("itemList") === null) {
+        itemList = [];
+    } else {
+        itemList = JSON.parse(localStorage.getItem("itemList"));
+    }
+    let checked;
+    let enable;
+    let disable;
+    for (let i = 0; i < div.length; i++) {
+        checked = div[i];
+        if (checked.classList.contains("in-a-cart") === true) {
+            enable = "✓" + div[i].children[0].innerText;
+            checked.style.opacity = "0.5";
+           itemList.splice(itemList.indexOf(div[i].children[0].innerText), 1, enable)
+        }
+        else if (checked.classList.contains("in-a-cart") === false) {
+            disable = div[i].children[0].innerText;
+            checked.style.opacity = "1";
+            itemList.splice(itemList.indexOf(div[i].children[0].innerText), 1, disable);
+        }
+    }
     localStorage.setItem("itemList", JSON.stringify(itemList));
 }
